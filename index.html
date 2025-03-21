@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spaceship text adventure</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+        </style>
+    <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <button title="play audio" id="audio-btn" class="paused" type="button" aria-label="play/mute audio button"></button>
+        <div class="game-container">
+            <div id="message">
+                <h1 class="title">wait, how did i get here?</h1>
+                <p class="instructions">shut up and play!</p>
+            </div> 
+            <div class="choices">
+                <button type="button" id="play-game">PLAY</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>sound effects by <a href="https://pixabay.com/it/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=19828" target="_blank">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=19828" target="_blank">Pixabay</a></p>
+        <p>icons by <a href="https://www.svgrepo.com/" target="_blank">SVGrepo</a>, background image by <a href="https://www.freepik.com/" target="_blank">freepik</a></p>
+        <p>coded by <a href="https://github.com/tortaruga" target="_blank">tortaruga 👽</a></p>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+
+    <script>
+        const audioBtn = document.getElementById('audio-btn');
+        const audio = new Audio('./assets/bg-audio.mp3');
+
+        audioBtn.addEventListener('click', handleAudio);
+
+        function handleAudio() {
+            if (audioBtn.classList.contains('playing')) {
+                audioBtn.className = 'paused';
+                audio.pause();
+                audioBtn.setAttribute('title', 'play audio');
+            } else if (audioBtn.classList.contains('paused')) {
+                audioBtn.className = 'playing';
+                audio.play();
+                audioBtn.setAttribute('title', 'mute audio');
+            }
+        }
+    </script>
+</body>
+</html>

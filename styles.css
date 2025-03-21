@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url(./assets/spaceship.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh; 
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit; 
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: .5rem;
+}
+
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: rgb(49, 36, 60);
+    border-radius: .75rem;
+    padding: .5rem;
+    width: 660px;
+    box-shadow: 7px 5px 10px;
+}
+
+#message {
+    background: repeating-linear-gradient(to top, #786a62, transparent) 0 0 / 5px 5px, blueviolet;
+    padding: 1rem;
+    border-radius: .75rem;
+    color: orange;
+    text-shadow: 0 0 5px orange;
+    aspect-ratio: 1.2;
+    overflow: auto;
+    scrollbar-width: thin;
+    width: 320px;
+    box-shadow: 0 0 5px;
+}
+
+#message .title {
+    text-align: center;
+    font-family: 'jersey 10', sans-serif;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    letter-spacing: .2rem;
+}
+
+.instructions,
+#play-game {
+    text-align: center;
+    font-family: 'jersey 10', sans-serif;
+    font-size: 2rem;
+    letter-spacing: .2rem;
+}
+
+#play-game {
+    margin-block: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #88888833;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-radius: .75rem;
+    padding: 1rem;
+    gap: .5rem;
+    background-color: rgb(31, 26, 30);
+}
+
+.choices button {
+    max-width: 100%;
+    padding-block: .5rem;
+    border-radius: 1rem;
+    border: .2rem solid #8a2be2;
+    color: orange;
+    background-color: #555;
+    background-color: rgb(31, 26, 30); 
+    font-weight: 500;
+    color: blueviolet;
+
+    background: repeating-linear-gradient(to top, #786a62, transparent) 0 0 / 5px 5px, blueviolet;
+    background: repeating-linear-gradient(to top, #29242a, transparent) 0 0 / 5px 5px, rgb(40, 5, 73);
+ 
+    background: repeating-linear-gradient(to top, #786a62, transparent) 0 0 / 5px 5px, blueviolet;
+    color: orange;
+}
+
+.choices button:hover {
+    color: blueviolet;
+    background: repeating-linear-gradient(to top, #29242a, transparent) 0 0 / 5px 5px, rgb(40, 5, 73);
+ 
+
+}
+
+.animation {
+    opacity: 0;
+    animation: animate .05s forwards;
+}
+
+.flicker {
+    opacity: 0;
+    animation: animate .5s infinite alternate-reverse;
+}
+
+#audio-btn {
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    border: none; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#audio-btn.playing {
+    background-image: url(./assets/audio-play.svg);
+    background-size: 2rem;
+}
+
+
+#audio-btn.paused {
+    background-image: url(./assets/audio-mute.svg);
+    background-size: 1.5rem;
+}
+
+footer {
+    background-color: rgb(31, 26, 30);
+    padding: 1rem;
+    backdrop-filter: blur(3px);
+    color: orange;
+    font-size: .88rem;
+}
+
+footer p {
+    margin-block: 0;
+    text-align: end;
+}
+
+footer a {
+    color: blueviolet;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: lavender;
+}
+
+@keyframes animate {
+    to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width:668px) {
+    .game-container {
+        width: 320px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flicker,
+    .animation {
+        animation: none;
+    }   
+}
