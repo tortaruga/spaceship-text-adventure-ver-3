@@ -1,38 +1,43 @@
 import scenes from './data.mjs'; 
+
 const playBtn = document.getElementById('play-game');
+playBtn.addEventListener('click', () => playScene('start'));
 
 function playScene(sceneKey) {
+    // clear monitor from previous message
     document.querySelector('.choices').innerHTML = '';
 
     const scene = scenes[sceneKey];
-    
     const parent = document.getElementById('message');
+    // store message 
     parent.innerHTML = scene.message;
     
-    const underscore = document.createElement('span');
-    underscore.textContent = '_';
-    underscore.classList.add('flicker');
-    parent.appendChild(underscore);
+    // add underscore
+    parent.appendChild(createUnderscore());
 
-    console.log(parent.children);
     const text = parent.textContent;
+    // clear message or it gets displayes twice
     document.getElementById('message').innerHTML = '';
 
+    // add typing effect
     typingEffect(parent, text);
+    // add flickering effect to underscore
     parent.lastElementChild.classList.add('flicker');
 
+    // add option buttons 
     scene.options.forEach(option => {
-        const optionButton = document.createElement('button');
-        optionButton.innerHTML = option.choice; 
-        document.querySelector('.choices').appendChild(optionButton);
-        optionButton.addEventListener('click', () => {
-            playScene(option.next)
-        })
+        createOptions(option);
     });
 }
 
-playBtn.addEventListener('click', () => playScene('start'));
-
+function createOptions(option) {
+    const optionButton = document.createElement('button');
+    optionButton.innerHTML = option.choice; 
+    document.querySelector('.choices').appendChild(optionButton);
+    optionButton.addEventListener('click', () => {
+        playScene(option.next)
+    })
+}
 
 function typingEffect(parent, textContent) {
 
@@ -48,4 +53,11 @@ function typingEffect(parent, textContent) {
         span.classList.add('animation');
         span.style.animationDelay = delay + 's';
     })
+}
+
+function createUnderscore() {
+    const underscore = document.createElement('span');
+    underscore.textContent = '_';
+    underscore.classList.add('flicker');
+    return underscore;
 }

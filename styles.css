@@ -71,25 +71,6 @@ main {
     margin-block: auto;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent; 
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #88888833;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
 .choices {
     display: flex;
     flex-direction: column;
@@ -105,15 +86,7 @@ main {
     padding-block: .5rem;
     border-radius: 1rem;
     border: .2rem solid #8a2be2;
-    color: orange;
-    background-color: #555;
-    background-color: rgb(31, 26, 30); 
     font-weight: 500;
-    color: blueviolet;
-
-    background: repeating-linear-gradient(to top, #786a62, transparent) 0 0 / 5px 5px, blueviolet;
-    background: repeating-linear-gradient(to top, #29242a, transparent) 0 0 / 5px 5px, rgb(40, 5, 73);
- 
     background: repeating-linear-gradient(to top, #786a62, transparent) 0 0 / 5px 5px, blueviolet;
     color: orange;
 }
@@ -121,8 +94,6 @@ main {
 .choices button:hover {
     color: blueviolet;
     background: repeating-linear-gradient(to top, #29242a, transparent) 0 0 / 5px 5px, rgb(40, 5, 73);
- 
-
 }
 
 .animation {
