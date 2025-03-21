@@ -1,12 +1,19 @@
 export default {
     start: {
+      message: '<p>You\'re late. Where have you been?</p>',
+      options: [
+        {choice: '...', next: 'instructions_one'}
+      ]
+    },
+
+    instructions_one: {
         message: '<p>What, you think we have all day? You need to fix the thermo-proto-solar engine before the alien pirate spaceship bursts into flames.</p>',
         options: [
-            {choice: 'Thermo-proto what...?', next: 'instructions'}
+            {choice: 'Thermo-proto what...?', next: 'instructions_two'}
         ]
     },
 
-    instructions: {
+    instructions_two: {
       message: '<p>Thermo-robo-lobar engine, you dim-wit. You have no idea how to do that, right? Well, that is none of my business. Good luck!</p>',
       options: [
         {choice: 'Wait...!', next: 'two_doors'}
@@ -447,7 +454,7 @@ export default {
         ],
     },
     
-    ask_heaven: {
+    ask_heavens: {
       message: '<p>An annoyed voice answers your screams: "The key, you dumbass! And keep it down, I\'m trying to sleep up here."</p><p>Key? Oh, yes, the key! That elf gave you a key! You\'re so dumb you forgot about it all this time! Quick, look for a keyhole!</p>',
       options: [
         {choice: 'Put key in keyhole', next: 'use_key'},
