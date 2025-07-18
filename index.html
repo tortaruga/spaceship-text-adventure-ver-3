@@ -35,7 +35,8 @@
     <script>
         const audioBtn = document.getElementById('audio-btn');
         const audio = new Audio('./assets/bg-audio.mp3');
-
+        audio.loop = true;
+        
         audioBtn.addEventListener('click', handleAudio);
 
         function handleAudio() {
