@@ -4,10 +4,16 @@ const playBtn = document.getElementById('play-game');
 playBtn.addEventListener('click', () => playScene('start'));
 
 function playScene(sceneKey) {
-    // clear monitor from previous message
+    // clear monitor from previous options
     document.querySelector('.choices').innerHTML = '';
 
     const scene = scenes[sceneKey];
+    
+    // add new option buttons 
+    scene.options.forEach(option => {
+        createOptions(option);
+    });
+
     const parent = document.getElementById('message');
     // store message 
     parent.innerHTML = scene.message;
@@ -24,19 +30,17 @@ function playScene(sceneKey) {
     // add flickering effect to underscore
     parent.lastElementChild.classList.add('flicker');
 
-    // add option buttons 
-    scene.options.forEach(option => {
-        createOptions(option);
-    });
 }
 
 function createOptions(option) {
     const optionButton = document.createElement('button');
     optionButton.innerHTML = option.choice; 
     document.querySelector('.choices').appendChild(optionButton);
+    optionButton.classList.add('option');
     optionButton.addEventListener('click', () => {
-        playScene(option.next)
+        playScene(option.next);
     })
+
 }
 
 function typingEffect(parent, textContent) {
@@ -53,7 +57,22 @@ function typingEffect(parent, textContent) {
         span.classList.add('animation');
         span.style.animationDelay = delay + 's';
     })
+
+    animateBtns(delay);
 }
+
+function animateBtns(delay) {
+    const totalDuration = delay * 1000;
+
+    setTimeout(() => {
+        const btns = document.querySelectorAll('.option'); 
+        btns.forEach(btn => {
+            btn.classList.add('show');
+        })    
+    }, totalDuration);
+    
+}
+
 
 function createUnderscore() {
     const underscore = document.createElement('span');

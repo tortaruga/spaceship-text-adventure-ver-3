@@ -1,15 +1,18 @@
+:root {
+    --color: #69b1b1;
+    --blue: #00aaff;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background: url(./assets/spaceship.jpg) no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-color: #302b28;
     min-height: 100vh; 
     font-family: 'Courier New', Courier, monospace;
+    background: repeating-linear-gradient(to top, #191716, transparent) 0 0 / 5px 5px, #302b28;
     margin: 0;
-    
 }
 
 button {
@@ -20,35 +23,25 @@ button {
 }
 
 main {
+    min-height: 100vh;
+    padding: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: .5rem;
 }
 
 .game-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    background-color: rgb(49, 36, 60);
     border-radius: .75rem;
     padding: .5rem;
-    width: 660px;
-    box-shadow: 7px 5px 10px;
+    max-width: 1000px;
+    margin: auto;
 }
 
 #message {
-    background: repeating-linear-gradient(to top, #786a62, transparent) 0 0 / 5px 5px, blueviolet;
     padding: 1rem;
-    border-radius: .75rem;
-    color: orange;
-    text-shadow: 0 0 5px orange;
-    aspect-ratio: 1.2;
-    overflow: auto;
-    scrollbar-width: thin;
-    width: 320px;
-    box-shadow: 0 0 5px;
+    color: var(--color);
+    text-shadow: 0 0 5px var(--color);
+    font-size: 1.1rem;
 }
 
 #message .title {
@@ -67,32 +60,30 @@ main {
     letter-spacing: .2rem;
 }
 
-#play-game {
-    margin-block: auto;
-}
 
 .choices {
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    border-radius: .75rem;
     padding: 1rem;
-    gap: .5rem;
-    background-color: rgb(31, 26, 30);
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-block-start: 3rem;
 }
 
 .choices button {
-    max-width: 100%;
+    max-width: 400px;
+    min-width: 155px;
     padding-block: .5rem;
     border-radius: 1rem;
-    border: .2rem solid #8a2be2;
+    border: 1px solid whitesmoke;
     font-weight: 500;
-    background: repeating-linear-gradient(to top, #786a62, transparent) 0 0 / 5px 5px, blueviolet;
-    color: orange;
+    background-color: transparent;
+    color: whitesmoke;
+    flex-grow: 1;
 }
 
 .choices button:hover {
-    color: blueviolet;
+    color: var(--color); 
     background: repeating-linear-gradient(to top, #29242a, transparent) 0 0 / 5px 5px, rgb(40, 5, 73);
 }
 
@@ -133,8 +124,7 @@ main {
 footer {
     background-color: rgb(31, 26, 30);
     padding: 1rem;
-    backdrop-filter: blur(3px);
-    color: orange;
+    color: var(--color);
     font-size: .88rem;
 }
 
@@ -144,7 +134,7 @@ footer p {
 }
 
 footer a {
-    color: blueviolet;
+    color: var(--blue); 
     text-decoration: none;
 }
 
@@ -152,17 +142,36 @@ footer a:hover {
     color: lavender;
 }
 
+
+.option {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.option.show {
+    animation: showBtns .8s both;
+    pointer-events: all;
+}
+
+@keyframes showBtns {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 @keyframes animate {
     to {
         opacity: 1;
     }
 }
 
-@media screen and (max-width:668px) {
-    .game-container {
-        width: 320px;
-    }
-}
 
 @media (prefers-reduced-motion: reduce) {
     .flicker,

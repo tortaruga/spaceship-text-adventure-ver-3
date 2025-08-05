@@ -26,30 +26,12 @@
 
     <footer>
         <p>sound effects by <a href="https://pixabay.com/it/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=19828" target="_blank">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=19828" target="_blank">Pixabay</a></p>
-        <p>icons by <a href="https://www.svgrepo.com/" target="_blank">SVGrepo</a>, background image by <a href="https://www.freepik.com/" target="_blank">freepik</a></p>
+        <p>icons by <a href="https://www.svgrepo.com/" target="_blank">SVGrepo</a></p>
         <p>coded by <a href="https://github.com/tortaruga" target="_blank">tortaruga 👽</a></p>
     </footer>
 
     <script type="module" src="./app.js"></script>
 
-    <script>
-        const audioBtn = document.getElementById('audio-btn');
-        const audio = new Audio('./assets/bg-audio.mp3');
-        audio.loop = true;
-        
-        audioBtn.addEventListener('click', handleAudio);
-
-        function handleAudio() {
-            if (audioBtn.classList.contains('playing')) {
-                audioBtn.className = 'paused';
-                audio.pause();
-                audioBtn.setAttribute('title', 'play audio');
-            } else if (audioBtn.classList.contains('paused')) {
-                audioBtn.className = 'playing';
-                audio.play();
-                audioBtn.setAttribute('title', 'mute audio');
-            }
-        }
-    </script>
+    <script defer src="./audio.js"></script>
 </body>
 </html>
